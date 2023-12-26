@@ -10,6 +10,10 @@ pub fn grayscale(encoded_file: &str) {
     let base64_to_vector = general_purpose::STANDARD.decode(encoded_file).unwrap();
     log(&"Image decoded".into());
 
-    let img = load_from_memory(&base64_to_vector).unwrap();
+    let mut img = load_from_memory(&base64_to_vector).unwrap();
     log(&"Image loaded".into());
+
+    img = img.grayscale();
+
+    log(&"Grayscale effect applied".into());
 }
